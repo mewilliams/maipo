@@ -1,0 +1,27 @@
+# .gitignore file
+# anything here will be ignored by git 
+# version control should focus on scripts/text, and not on data or images.
+
+*.pdf
+
+*.*~
+*.bak
+*.fig
+*.mat
+*.DS_Store
+
+# RBR data format RSK
+*.rsk
+
+
+# manuscript latex files
+*.aux
+*.bbl
+*.blg
+*.dvi
+*.log
+
+# Ignore images for now at least
+*.png
+*.eps
+*.jpg
