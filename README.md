@@ -30,7 +30,7 @@ For latex files, later.
 
 Git is a version control software - essentially it compares two text documents and records changes, so if you break or change something you can go back and fix it, or if you are working collectively on a bit of code one person can change line 5 while the other is working on line 2003, and the code can be merged into one. Github is one of several websites to host your version controls. There is a GUI as well as command line operation with git. A few resources: 
 
-[Software carpentry: why and how to version control with git](https://swcarpentry.github.io/git-novice/)
+[Software carpentry: why and how to version control with git](https://swcarpentry.github.io/git-novice/) - this is a step by step tutorial.
 
 [Github's Hello World intro. to _git_](https://guides.github.com/activities/hello-world/) and all of the [github guides](https://guides.github.com/)
 
