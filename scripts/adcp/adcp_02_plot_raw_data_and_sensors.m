@@ -2,6 +2,9 @@
 % m williams
 %
 % % adcp_02_plot_raw_data_and_sensors.m
+%
+% this file doesnt save anything, just plots the relevant sensors for the
+% two deployments of the adcp on the La Tagua Veloz.
 
 clear
 close all
