@@ -3,8 +3,14 @@
 %
 % % adcp_02_plot_raw_data_and_sensors.m
 %
-% this file doesnt save anything, just plots the relevant sensors for the
+% this file plots the relevant sensors for the
 % two deployments of the adcp on the La Tagua Veloz.
+% and gets the indices where the instrument was deployed (start and end)
+% by inspection of these sensors. (not based on field note)
+disp('confirm start and end times with field notes')
+
+%for macbook:
+addpath(genpath('~/Research/general_scripts/matlabfunctions/'))
 
 clear
 close all
@@ -28,6 +34,13 @@ datetick2('x')
 
 
 
+% by inspection, in the water day 2: 
+% 14:45 - 23:30 11 Dec 2019 (instrument time, should be GMT)
+% corresponds to 
+%
+startidx_day2 = find(adcp.mtime>datenum(2019,12,11,14,45,0),1,'first')
+endidx_day2 = find(adcp.mtime<datenum(2019,12,11,23,30,0),1,'last')
+
 
 load ../../edited_data/adcp/adcp_day1_december_2019_maipo.mat
 
@@ -44,6 +57,17 @@ datetick2('x')
 
 pctgood_pcolor(adcp,cfg,12)
 datetick2('x')
+
+
+% by inspection, in the water day 1: 
+% 18:49 - 23:21 10 Dec 2019 (instrument time, should be GMT)
+% at 23:21 we sunk the LTV
+% corresponds to 
+%
+startidx_day1 = find(adcp.mtime>datenum(2019,12,10,18,49,0),1,'first')
+endidx_day1 = find(adcp.mtime<datenum(2019,12,10,23,21,30),1,'last')
+
+save('../../edited_data/adcp/in_water_indices_rdi_adcp.mat','startidx*','endidx*')
 
 function [] = echo_intensity_pcolor(adcp,cfg,figure_number)
 figure(figure_number)
