@@ -19,10 +19,30 @@ plot_N_bin_smooth(adcp,cfg,1,10)
 datetick2('x')
 
 figure(20)
-plot_N_bin(adcp,cfg,1,startidx_day2,endidx_day2)
+plot_N_bin(adcp,cfg,1,startidx_day2,startidx_day2)
 plot_N_bin_smooth(adcp,cfg,1,10,startidx_day2,endidx_day2)
 datetick2('x')
 title('day 2 - 11 Dec 2019')
+
+binno = 1;
+figure(299)
+plot(adcp.east_vel(binno,startidx_day2:endidx_day2),adcp.north_vel(binno,(startidx_day2:endidx_day2)),'.')
+axis equal
+grid on
+xlabel(['East Vel, bin ',num2str(binno)])
+ylabel(['North Vel, bin ',num2str(binno)])
+title(['Day 2, bin ',num2str(binno)])
+axis equal
+
+figure(399)
+plot(adcp.east_vel(binno,startidx_day2:endidx_day2),adcp.north_vel(binno,(startidx_day2:endidx_day2)),'.')
+hold all
+axis equal
+grid on
+xlabel(['East Vel, bin ',num2str(binno)])
+ylabel(['North Vel, bin ',num2str(binno)])
+
+% return;
 
 load ../../edited_data/adcp/adcp_day1_december_2019_maipo.mat
 figure(1)
@@ -37,6 +57,22 @@ datetick2('x')
 title('day 1 - 10 Dec 2019')
 
 
+figure(199)
+
+plot(adcp.east_vel(binno,(startidx_day1:endidx_day1)),adcp.north_vel(binno,(startidx_day1:endidx_day1)),'.')
+axis equal
+grid on
+xlabel(['East Vel, bin ',num2str(binno)])
+ylabel(['North Vel, bin ',num2str(binno)])
+title(['Day 1, bin ',num2str(binno)])
+axis equal
+
+
+figure(399)
+plot(adcp.east_vel(binno,(startidx_day1:endidx_day1)),adcp.north_vel(binno,(startidx_day1:endidx_day1)),'.')
+hold all
+legend('day 2','day 1')
+axis equal 
 
 % data approx 26541:40803
 
