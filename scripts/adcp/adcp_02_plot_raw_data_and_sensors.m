@@ -32,6 +32,8 @@ pctgood_pcolor(adcp,cfg,22)
 datetick2('x')
 
 
+corr_pcolor(adcp,cfg,23)
+datetick2('x')
 
 
 % by inspection, in the water day 2: 
@@ -62,6 +64,8 @@ datetick2('x')
 pctgood_pcolor(adcp,cfg,12)
 datetick2('x')
 
+corr_pcolor(adcp,cfg,13)
+datetick2('x')
 
 % by inspection, in the water day 1: 
 % 18:49 - 23:21 10 Dec 2019 (instrument time, should be GMT)
@@ -99,6 +103,33 @@ end
 % figure(figure_n/umber)
 
 end
+
+
+function [] = corr_pcolor(adcp,cfg,figure_number)
+figure(figure_number)
+subplot(511), pcolor(adcp.mtime,cfg.ranges,squeeze(adcp.corr(:,1,:))), shading flat, cbax = colorbar;
+ylabel(cbax,'corr 1')
+subplot(512), pcolor(adcp.mtime,cfg.ranges,squeeze(adcp.corr(:,2,:))), shading flat, cbax = colorbar;
+ylabel(cbax,'corr 2')
+subplot(513), pcolor(adcp.mtime,cfg.ranges,squeeze(adcp.corr(:,3,:))), shading flat, cbax = colorbar;
+ylabel(cbax,'corr 3')
+subplot(514), pcolor(adcp.mtime,cfg.ranges,squeeze(adcp.corr(:,4,:))), shading flat, cbax = colorbar;
+ylabel(cbax,'corr 4')
+
+subplot(515), pcolor(adcp.mtime,cfg.ranges,squeeze(nanmean(adcp.corr,2))), shading flat, cbax = colorbar;
+ylabel(cbax,'Avg. corr')
+
+for i=1:5
+    subplot(5,1,i)
+    grid on
+    ylabel('z (m)')
+end
+
+% figure(figure_n/umber)
+
+end
+
+
 
 
 
