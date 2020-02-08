@@ -17,10 +17,13 @@ Pmax = max(Pressure);
 if Pmax>.6
 mindepth = 0.6;
 minsurface = 0.3;
-else
+elseif Pmax>.15
     mindepth = 0.3;
     minsurface = 0.2;
     thresh = 0.25;
+else
+%     castidx = NaN;
+    return;
 end
 
 [bottomval,bvidx]= findpeaks(Pressure,'minpeakheight',mindepth,'minpeakdistance',30);
