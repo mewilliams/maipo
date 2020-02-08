@@ -87,11 +87,16 @@ load ../../edited_data/ctd/castaway/castaway_matrices_20191211_maipo.mat
 
 
 T = timeadcp;
-S = interp1(timevec,nanmean(saltmatrix'),T);
 
+S = interp1(timevec,nanmean(saltmatrix'),T);
+T = timevec;
 % figure, plot(timevec,
 
 XiS = interp1(timeadcp,X,timevec);
+U = interp1(timeadcp,su81finite,T);
+S = saltmatrix(:,5);
+
+save('../../edited_data/dispersion_U_S_X_T.mat','XiS','S','T','U')
 %%
 figure
 plot(XiS,nanmean(saltmatrix'),'o'), hold all
