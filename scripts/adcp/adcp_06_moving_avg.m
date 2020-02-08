@@ -34,6 +34,8 @@ pcolor(adcp.mtime,cfg.ranges,nvconv), shading flat,title('conv north'), colorbar
 
 subplot(313)
 pcolor(adcp.mtime,cfg.ranges,vvconv), shading flat, title('conv vert'), colorbar
+
+
 %% 
 % sanity check the moving average is ok:
 figure
