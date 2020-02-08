@@ -1,43 +1,53 @@
 clear
 close all;
 
+% this script requires GSW toolbox. Also probably datetick2.
+addpath(genpath('~/Research/general_scripts/matlabfunctions/'))
+
+
+
+
 load ../../raw_data/CastawayData/CC1547011_20191211_214422.mat
+% runbelow(Time,Conductivity,Temperature,Pressure,CastTimeUtc)
+% 
+% load ../../raw_data/CastawayData/CC1547011_20191211_210857.mat % <-- script written on this one.
+% runbelow(Time,Conductivity,Temperature,Pressure,CastTimeUtc)
+% load ../../raw_data/CastawayData/CC1547011_20191211_204644.mat
+% runbelow(Time,Conductivity,Temperature,Pressure,CastTimeUtc)
+% load ../../raw_data/CastawayData/CC1547011_20191211_202016.mat
+% runbelow(Time,Conductivity,Temperature,Pressure,CastTimeUtc)
+% load ../../raw_data/CastawayData/CC1547011_20191211_193751.mat
+% runbelow(Time,Conductivity,Temperature,Pressure,CastTimeUtc)
+% load ../../raw_data/CastawayData/CC1547011_20191211_191342.mat
+% runbelow(Time,Conductivity,Temperature,Pressure,CastTimeUtc)
+% load ../../raw_data/CastawayData/CC1547011_20191211_173829.mat
+% runbelow(Time,Conductivity,Temperature,Pressure,CastTimeUtc)
+% load ../../raw_data/CastawayData/CC1547011_20191211_165950.mat
+% runbelow(Time,Conductivity,Temperature,Pressure,CastTimeUtc)
+% load ../../raw_data/CastawayData/CC1547011_20191211_162149.mat
+% runbelow(Time,Conductivity,Temperature,Pressure,CastTimeUtc)
+% load ../../raw_data/CastawayData/CC1547011_20191211_160826.mat
+% runbelow(Time,Conductivity,Temperature,Pressure,CastTimeUtc)
+% load ../../raw_data/CastawayData/CC1547011_20191211_153421.mat
+% runbelow(Time,Conductivity,Temperature,Pressure,CastTimeUtc)
+% 
+% 
+% load ../../raw_data/CastawayData/CC1547011_20191211_145832.mat
+% runbelow(Time,Conductivity,Temperature,Pressure,CastTimeUtc)
+% 
+% % day 1
+% load ../../raw_data/CastawayData/CC1547011_20191210_214842.mat
+% runbelow(Time,Conductivity,Temperature,Pressure,CastTimeUtc)
+% 
+% load ../../raw_data/CastawayData/CC1547011_20191210_204152.mat
+% runbelow(Time,Conductivity,Temperature,Pressure,CastTimeUtc)
+% 
+% load ../../raw_data/CastawayData/CC1547011_20191210_194148.mat
+% runbelow(Time,Conductivity,Temperature,Pressure,CastTimeUtc)
+
+load ../../raw_data/CastawayData/CC1547011_20191211_202624.mat
 runbelow(Time,Conductivity,Temperature,Pressure,CastTimeUtc)
 
-load ../../raw_data/CastawayData/CC1547011_20191211_210857.mat % <-- script written on this one.
-runbelow(Time,Conductivity,Temperature,Pressure,CastTimeUtc)
-load ../../raw_data/CastawayData/CC1547011_20191211_204644.mat
-runbelow(Time,Conductivity,Temperature,Pressure,CastTimeUtc)
-load ../../raw_data/CastawayData/CC1547011_20191211_202016.mat
-runbelow(Time,Conductivity,Temperature,Pressure,CastTimeUtc)
-load ../../raw_data/CastawayData/CC1547011_20191211_193751.mat
-runbelow(Time,Conductivity,Temperature,Pressure,CastTimeUtc)
-load ../../raw_data/CastawayData/CC1547011_20191211_191342.mat
-runbelow(Time,Conductivity,Temperature,Pressure,CastTimeUtc)
-load ../../raw_data/CastawayData/CC1547011_20191211_173829.mat
-runbelow(Time,Conductivity,Temperature,Pressure,CastTimeUtc)
-load ../../raw_data/CastawayData/CC1547011_20191211_165950.mat
-runbelow(Time,Conductivity,Temperature,Pressure,CastTimeUtc)
-load ../../raw_data/CastawayData/CC1547011_20191211_162149.mat
-runbelow(Time,Conductivity,Temperature,Pressure,CastTimeUtc)
-load ../../raw_data/CastawayData/CC1547011_20191211_160826.mat
-runbelow(Time,Conductivity,Temperature,Pressure,CastTimeUtc)
-load ../../raw_data/CastawayData/CC1547011_20191211_153421.mat
-runbelow(Time,Conductivity,Temperature,Pressure,CastTimeUtc)
-
-
-load ../../raw_data/CastawayData/CC1547011_20191211_145832.mat
-runbelow(Time,Conductivity,Temperature,Pressure,CastTimeUtc)
-
-% day 1
-load ../../raw_data/CastawayData/CC1547011_20191210_214842.mat
-runbelow(Time,Conductivity,Temperature,Pressure,CastTimeUtc)
-
-load ../../raw_data/CastawayData/CC1547011_20191210_204152.mat
-runbelow(Time,Conductivity,Temperature,Pressure,CastTimeUtc)
-
-load ../../raw_data/CastawayData/CC1547011_20191210_194148.mat
-runbelow(Time,Conductivity,Temperature,Pressure,CastTimeUtc)
 
 
 
