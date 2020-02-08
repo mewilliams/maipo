@@ -9,9 +9,17 @@ addpath(genpath('~/Research/general_scripts/matlabfunctions/'))
 clear
 close all;
 
-dirpath = ['../../raw_data/CastawayData/'];
-dec11fn = dir([dirpath,'CC1547011_20191211*']);
+dec11savename = '../../edited_data/ctd/castaway/castaway_downcasts_20191211_maipo.mat'
+dec10savename = '../../edited_data/ctd/castaway/castaway_downcasts_20191210_maipo.mat'
 
+
+dirpath = ['../../raw_data/CastawayData/'];
+
+dec11fn = dir([dirpath,'CC1547011_20191211*']);
+dec10fn = dir([dirpath,'CC1547011_20191210*']);
+
+% fn = dec11fn;
+fn = dec10fn;
 
 % want to put these in structures, I guess..
 ci = 1;
@@ -23,10 +31,10 @@ timecast(ci) = NaN;
 latitudestartcast(ci) = NaN;
 longitudestartcast(ci) = NaN;
 
-for i = 1:length(dec11fn)
+for i = 1:length(fn)
     
-    load([dirpath,dec11fn(i).name])
-    if max(Pressure)>0.1
+    load([dirpath,fn(i).name])
+    if max(Pressure)>0.15
         %     if IsInvalid==1
         %         if max(Pressure)<0.1
         %             disp(num2str(i))
@@ -34,6 +42,7 @@ for i = 1:length(dec11fn)
         %         end
         %     end
         [castidx] = get_castaway_downcast(Pressure);
+        %         if isfinite(castidx)
         
         %%%%%
         % UNCOMMENT TO PLOT ALL THE PRESSURE RECORDS TO SEE DOWNCAST
@@ -63,12 +72,23 @@ for i = 1:length(dec11fn)
     end
 end
 
+
 for i =1:length(condcast)
     [rho{i},salinitycast{i}] = rho_cond_temp_pres(condcast{i}./1000,tempcast{i},prescast{i});
     
 end
 
 
+if and(CastTimeUtc(2)==12,CastTimeUtc(3)==11)
+    savename = dec11savename;
+elseif and(CastTimeUtc(2)==12,CastTimeUtc(3)==10)
+    savename = dec10savename;
+else
+    disp('not saving anything')
+    return;
+end
+
+save(savename,'rho','salinitycast','*startcast','tempcast','condcast','prescast','timecast')
 
 
 function [rho,SA] = rho_cond_temp_pres(conductivity,temperature,pressure)
