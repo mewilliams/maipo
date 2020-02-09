@@ -1,7 +1,8 @@
 %%  Plot Maipo CT data
 
 clear all
-load MAT/Maipo_YSI_CT
+% load MAT/Maipo_YSI_CT
+load ../../raw_data/ysi_ctd/Maipo_YSI_CT.mat
 
 for ii=1:2:5
         
