@@ -7,7 +7,7 @@
 %
 % first use the interpolated matrix terms
 % but later check about the raw downcasts to see if answer differs much
-
+ addpath(genpath('~/Research/general_scripts/matlabfunctions/'))
 
 
 clear
@@ -71,8 +71,23 @@ plot(ur,vr,'.')
 
 V = -1*(evconv)*sind(thetad) + nvconv*cosd(thetad);
 U = evconv*cosd(thetad) + nvconv*sind(thetad);
+Ur = U;
+
+figure, subplot(211)
+pcolor(timeadcp,range,U), shading flat;
+cbax = colorbar;
+ylabel(cbax,'U (m/s)')
+subplot(212), pcolor(timeadcp,range,V), shading flat;
+cbax = colorbar;
+ylabel(cbax,'V (m/s)')
+
 
 figure, plot(timeadcp,nanmean(U))
+title('depth averaged U')
+
+Uda = nanmean(U);
+figure
+plot(timeadcp,Uda), ylabel('depth avg U')
 
 
 figure

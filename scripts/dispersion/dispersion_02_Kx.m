@@ -18,18 +18,30 @@ hold all
 plot(1:transidx,S(1:transidx),'.')
 plot(transidx:length(S),S(transidx:end),'.')
 
-So = max(S) % -min(S);
 
 Sebb = S(1:transidx);
 Xebb = X(1:transidx);
 Tebb = T(1:transidx);
 Uebb = U(1:transidx);
 
+return;
 
-LHSE = (2*Sebb/So - 1);
-LHSE = erfinv(LHSE);
+minS = 20; 
+%minS = min(S);
+So = max(S) -minS; % -min(S);
+
+lhse0 = 2*(S-minS)/(max(S)-minS) - 1;
+return;
+
 figure
-plot(Xebb,LHSE,'.'), hold all
+% LHSE = (2*Sebb/So  - 1);
+LHSE = (Sebb - minS)*(2/So) - 1;
+subplot(211), plot(Xebb,LHSE,'o')
+ylabel('(Sebb - minS)*(2/So) - 1')
+LHSE = erfinv(LHSE);
+subplot(212), plot(Xebb,LHSE,'o'), hold all
+ylabel('erfinv(LHSE)')
+return;
 
 LHSE = LHSE(isfinite(Xebb));
 Sebb = Sebb(isfinite(Xebb));
