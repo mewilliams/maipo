@@ -1,14 +1,20 @@
 %%  Load and plot AQD files
 
 
-
 %%  Load file
 
-clear all
-%ppath = '/Data/Maipo/AQD/Converted/';
-ppath = '/Users/arhd/Dropbox/Alex/Data/Maipo/AQD/Converted/';
+% clear all
 
-filenum=2
+
+%ppath = '/Data/Maipo/AQD/Converted/';
+% ppath = '/Users/arhd/Dropbox/Alex/Data/Maipo/AQD/Converted/';
+ppath = '~/Research/maipo/raw_data/aqd/' ;
+disp('not entirely sure these are the right aquadopp files')
+
+fileno = input('which file number (1:6)? 1:DC01_M01, 2:DC01_N01, 3:DC01_M02 (split 1), 4:DC01_M02 (split 2), 5:3_mai, 6:4_mai  ')
+filenum = fileno
+% filenum=1
+
 if filenum==1
     fname = 'DC01_M01';
     startnum = 12100; %11500;
@@ -39,7 +45,8 @@ load([ppath fname]);
 disp(['Loading ' ppath fname]);
 
 %%  Load salinity
-load('MAT/Maipo_YSI_CT')
+% load('MAT/Maipo_YSI_CT')
+load('~/Research/maipo/raw_data/ysi_ctd/Maipo_YSI_CT.mat')
 disp('Loading MAT/Maipo_YSI_CT');
 
 %%  Set times
@@ -48,8 +55,13 @@ starttime = datenum(Vtime(1,startnum), Vtime(2,startnum), Vtime(3,startnum), Vti
 endtime = datenum(Vtime(1,endnum), Vtime(2,endnum), Vtime(3,endnum), Vtime(4,endnum), Vtime(5,endnum), Vtime(6,endnum));
 datarange = startnum:endnum;
 
-Sstartnum = closest(ysi(1).time(:),starttime); Sstattime = ysi(1).time(Sstartnum);
-Sendnum = closest(ysi(1).time(:),endtime); Sendtime = ysi(1).time(Sendnum);
+% Sstartnum = closest(ysi(1).time(:),starttime); % <-- Alex's function? Replace with something else
+Sstartnum = find(ysi(1).time(:)>starttime,1,'first');
+Sstattime = ysi(1).time(Sstartnum);
+% Sendnum = closest(ysi(1).time(:),endtime);  % <-- Alex's function? Replace with something else
+Sendnum = find(ysi(1).time(:)<endtime,1,'last');
+
+Sendtime = ysi(1).time(Sendnum);
 Sdatarange = Sstartnum:Sendnum;
 
 %%  Variable
@@ -104,7 +116,8 @@ rhoocean = gsw_rho(34,14,0);
 
 %%  Extract H
 maxdepth = 3.5;
-maxdepthind = closest(y, maxdepth);
+% maxdepthind = closest(y, maxdepth);  % <-- Alex's function? Replace with something else
+[~,maxdepthind] = (min(abs(y - maxdepth)));
 [Y, botind] = max(Echobin,[],1);
 H_raw = y(botind);
 H = medfilt1(H_raw,10);

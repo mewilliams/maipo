@@ -9,11 +9,15 @@ load ../../edited_data/rbr/two_pressure_records_raw.mat
 inwater1 = 348461:3002915; %by inspection
 inwater2 = 537015:4698078;
 
+save('../../edited_data/rbr/indices_in_water','inwater*')
+
 p1 = p1(inwater1);
 t1 = t1(inwater1);
  
 p2 = p2(inwater2);
 t2 = t2(inwater2);
+
+
 
 
 
