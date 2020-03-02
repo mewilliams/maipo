@@ -27,4 +27,16 @@
 *.jpg
 
 # Ignore RDI ADCP data
-*.00*
+*.00*	
+
+*._coast
+*._maipo
+*._readme.txt.txt
+*.dpl
+*.scl
+*.whp
+
+*MAIPO000.000
+*.000
+*._* 
+
