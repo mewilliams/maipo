@@ -8,7 +8,11 @@
 clear;
 close all
 
-% for location of rdradcp.m script
+disp('this file requires rdradcp.m to be in the matlab path')
+
+% for location of rdradcp.m script (change if necessary)}
+% rdradcp.m is from Rich Pawlowicz's matlab stuff
+% located here https://www.eoas.ubc.ca/~rich/#RDADCP
 addpath ~/Research/general_scripts/matlabfunctions/RDADCP/
 
 
