@@ -25,6 +25,8 @@ Also not version control
 For latex files, later. 
 
 ### Useful related information (about git, etc.)
+[How to clone this repository](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) (you can also download as a zip file, but then you cannot pull or push new changes): 
+
 
 ##### Git
 
