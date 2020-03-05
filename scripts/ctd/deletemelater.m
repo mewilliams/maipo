@@ -5,3 +5,5 @@ y = 2;
 
 disp(x+y)
 
+disp(x-y)
+
