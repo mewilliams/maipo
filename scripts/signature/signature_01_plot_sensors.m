@@ -10,7 +10,7 @@ close all
 
 disp('file does not save anything, just makes some plots')
 
-
+% Here - look at the AVERAGED data:
 % SPLIT 1 
 load ../../raw_data/signature/S100882A011_Maipo_Dec_avgd_1.mat
 figure(1), plot_temp_pres(Data)
@@ -28,6 +28,32 @@ legend('file avgd\_1','file avgd\_2','file avgd\_3','location','best')
 
 figure(2), plot_pitch_roll_batt(Data)
 legend('file avgd\_1','file avgd\_2','file avgd\_3','location','best')
+
+
+
+% Here - look at the burst data 
+load ../../raw_data/signature/S100882A011_Maipo_Dec_1.mat
+figure(3), plot_burst_temp_pres(Data)
+figure(3), plot_temp_pres(Data)
+load ../../raw_data/signature/S100882A011_Maipo_Dec_2.mat
+figure(3), plot_burst_temp_pres(Data)
+figure(3), plot_temp_pres(Data)
+
+
+
+
+function [] = plot_burst_temp_pres(Data)
+
+subplot(2,1,1), plot(Data.Burst_Time,Data.Burst_Pressure,'.'), hold all
+ylabel('pres. (dbar)'), grid on
+title('Burst data files - Maipo Signature')
+datetick('x')
+subplot(2,1,2), plot(Data.Burst_Time,Data.Burst_Temperature,'.'), hold all
+ylabel('T (C)'), grid on
+datetick('x')
+
+end
+
 
 
 function [] = plot_temp_pres(Data)

@@ -16,19 +16,43 @@ load ../../raw_data/signature/S100882A011_Maipo_Dec_avgd_1.mat
 figure(1), pcolor_avg_vels(Data,Config)
 figure(2), pcolor_avg_beamamp(Data,Config)
 figure(3), pcolor_avg_corr(Data,Config)
+figure(4), plot_bin1_vels(Data)
+
 
 % SPLIT 2 
 load ../../raw_data/signature/S100882A011_Maipo_Dec_avgd_2.mat
 figure(1), pcolor_avg_vels(Data,Config)
 figure(2), pcolor_avg_beamamp(Data,Config)
 figure(3), pcolor_avg_corr(Data,Config)
+figure(4), plot_bin1_vels(Data)
 
+return;
 
 % SPLIT 3 (out of water)
 load ../../raw_data/signature/S100882A011_Maipo_Dec_avgd_3.mat
 figure(1), pcolor_avg_vels(Data,Config)
 figure(2), pcolor_avg_beamamp(Data,Config)
 figure(3), pcolor_avg_corr(Data,Config)
+figure(4), plot_bin1_vels(Data)
+
+function [] = plot_bin1_vels(Data)
+subplot(311), plot(Data.Average_Time,Data.Average_VelEast(:,1)), hold all
+legend('bin1 east vel')
+ylabel('east vel (m/s)')
+datetick('x')
+
+subplot(312), plot(Data.Average_Time,Data.Average_VelNorth(:,1)), hold all
+legend('bin1 north vel')
+ylabel('north vel (m/s)')
+datetick('x')
+
+subplot(313), plot(Data.Average_Time,Data.Average_VelUp1(:,1),'k'), hold all
+subplot(313), plot(Data.Average_Time,Data.Average_VelUp2(:,1),'r')
+legend('up 1','up 2')
+ylabel('vert vel (m/s)')
+datetick('x')
+
+end
 
 
 function [] = pcolor_avg_vels(Data,Config)
