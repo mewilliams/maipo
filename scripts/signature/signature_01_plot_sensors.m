@@ -47,8 +47,11 @@ function [] = plot_burst_temp_pres(Data)
 subplot(2,1,1), plot(Data.Burst_Time,Data.Burst_Pressure,'.'), hold all
 ylabel('pres. (dbar)'), grid on
 title('Burst data files - Maipo Signature')
+plot(Data.Alt_Burst_Time,Data.Alt_Burst_Pressure,'.')
 datetick('x')
 subplot(2,1,2), plot(Data.Burst_Time,Data.Burst_Temperature,'.'), hold all
+plot(Data.Alt_Burst_Time,Data.Alt_Burst_Temperature,'.')
+
 ylabel('T (C)'), grid on
 datetick('x')
 
