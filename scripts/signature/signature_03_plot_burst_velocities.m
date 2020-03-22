@@ -8,23 +8,43 @@ clear;
 % close all
 
 load ../../raw_data/signature/S100882A011_Maipo_Dec_1.mat
+% [idx_burst] = burst_indices(Data.Alt_Burst_Time);
+
 figure(1)
 plot_bin1_4beam(Data);
-
-
 
 figure(2)
 pcolor_vel_burst_by_burst(Data)
+
+
+
+figure(13)
+
+subplot(4,1,1)
+pcolor_alt_burst_anything(Data.Alt_Burst_AmpBeam1,Data), shading flat
+
+subplot(4,1,2)
+pcolor_alt_burst_anything(Data.Alt_Burst_AmpBeam2,Data), shading flat
+
+subplot(4,1,3)
+pcolor_alt_burst_anything(Data.Alt_Burst_AmpBeam3,Data), shading flat
+
+subplot(4,1,4)
+pcolor_alt_burst_anything(Data.Alt_Burst_AmpBeam4,Data), shading flat
+datetick2('x')
+
 load ../../raw_data/signature/S100882A011_Maipo_Dec_2.mat
+% [idx_burst] = burst_indices(Data.Alt_Burst_Time);
+
 figure(1)
 plot_bin1_4beam(Data);
 datetick2('x')
-
 
 figure(2)
 colormap(cbrewer('div','RdYlBu',16))
 
 pcolor_vel_burst_by_burst(Data)
+datetick2('x')
 for i= 1:4
     subplot(4,1,i)
     caxis([-.5 .5])
@@ -32,12 +52,46 @@ for i= 1:4
 end
 % figure
 
+
+figure(13)
+
+subplot(4,1,1)
+pcolor_alt_burst_anything(Data.Alt_Burst_AmpBeam1,Data), shading flat
+
+subplot(4,1,2)
+pcolor_alt_burst_anything(Data.Alt_Burst_AmpBeam2,Data), shading flat
+
+subplot(4,1,3)
+pcolor_alt_burst_anything(Data.Alt_Burst_AmpBeam3,Data), shading flat
+
+subplot(4,1,4)
+pcolor_alt_burst_anything(Data.Alt_Burst_AmpBeam4,Data), shading flat
+datetick2('x')
+
+
+function [] = pcolor_alt_burst_anything(matrix_to_plot,Data)
+
+splitidx = find(diff(Data.Alt_Burst_Time)>.04);
+idx_burst = ones(length(splitidx),2);
+idx_burst(:,2) = splitidx;
+idx_burst(2:end,1) = idx_burst(1:end-1,2)+1;
+
+
+for i = 1:length(idx_burst)
+    bi = idx_burst(i,1):idx_burst(i,2);
+    pcolor(Data.Alt_Burst_Time(bi),[1:22],matrix_to_plot(bi,:)'), hold all
+end
+
+end
+
+
 function [] = pcolor_vel_burst_by_burst(Data)
 
 splitidx = find(diff(Data.Alt_Burst_Time)>.04);
 idx_burst = ones(length(splitidx),2);
 idx_burst(:,2) = splitidx;
 idx_burst(2:end,1) = idx_burst(1:end-1,2)+1;
+
 
 for i = 1:length(idx_burst)
     bi = idx_burst(i,1):idx_burst(i,2);
@@ -49,9 +103,6 @@ for i = 1:length(idx_burst)
     pcolor(Data.Alt_Burst_Time(bi),[1:22],Data.Alt_Burst_VelBeam3(bi,:)'), shading flat, hold all
     subplot(414)
     pcolor(Data.Alt_Burst_Time(bi),[1:22],Data.Alt_Burst_VelBeam4(bi,:)'), shading flat, hold all
-    
-    
-    
     
 end
 
