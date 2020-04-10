@@ -19,22 +19,30 @@ pcolor_vel_burst_by_burst(Data)
 
 
 figure(13)
-
 subplot(4,1,1)
 pcolor_alt_burst_anything(Data.Alt_Burst_AmpBeam1,Data), shading flat
-
 subplot(4,1,2)
 pcolor_alt_burst_anything(Data.Alt_Burst_AmpBeam2,Data), shading flat
-
 subplot(4,1,3)
 pcolor_alt_burst_anything(Data.Alt_Burst_AmpBeam3,Data), shading flat
-
 subplot(4,1,4)
 pcolor_alt_burst_anything(Data.Alt_Burst_AmpBeam4,Data), shading flat
 datetick2('x')
 
 load ../../raw_data/signature/S100882A011_Maipo_Dec_2.mat
 % [idx_burst] = burst_indices(Data.Alt_Burst_Time);
+
+
+figure(13)
+subplot(4,1,1)
+pcolor_alt_burst_anything(Data.Alt_Burst_AmpBeam1,Data), shading flat
+subplot(4,1,2)
+pcolor_alt_burst_anything(Data.Alt_Burst_AmpBeam2,Data), shading flat
+subplot(4,1,3)
+pcolor_alt_burst_anything(Data.Alt_Burst_AmpBeam3,Data), shading flat
+subplot(4,1,4)
+pcolor_alt_burst_anything(Data.Alt_Burst_AmpBeam4,Data), shading flat
+datetick2('x')
 
 figure(1)
 plot_bin1_4beam(Data);
