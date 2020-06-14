@@ -4,6 +4,9 @@
 %
 % plot burst velocities from Maipo deployement.
 % 5th beam and 4 beams...
+
+addpath(genpath('~/Research/general_scripts/matlabfunctions/'))
+
 clear;
 % close all
 
@@ -89,6 +92,8 @@ for i = 1:length(idx_burst)
     bi = idx_burst(i,1):idx_burst(i,2);
     pcolor(Data.Alt_Burst_Time(bi),[1:22],matrix_to_plot(bi,:)'), hold all
 end
+
+
 
 end
 

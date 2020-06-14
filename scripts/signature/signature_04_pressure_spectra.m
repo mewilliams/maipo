@@ -183,13 +183,13 @@ for i = 1:2%length(biab) %second file has 3 "bursts"
     ax(spno) = subplot(3,2,spno), plot(f,pxx,'color',C(spno,:)), hold on
     figure(20)
     plot(tiab,piab,'color',C(spno,:)), hold on
-    spno = spno+1;
     
       
     figure(25)
     subplot(6,2,spno6), plot(f,pxx,'color',C(spno,:)), hold on, spno6 = spno6+1;
     subplot(6,2,spno6), plot(frbr,pxxrbr,'color',C(spno,:)), hold on, spno6 = spno6+1;
 
+    spno = spno+1;
 
     
 end

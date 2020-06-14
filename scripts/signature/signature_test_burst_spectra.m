@@ -4,13 +4,15 @@
 %
 % spectral analysis of temperature and pressure records first.
 
-clear
+% clear
 % close all;
 
 
 idxleg = 1;
 
 load ../../raw_data/signature/S100882A011_Maipo_Dec_2.mat
+
+figure(502)
 subplot(2,1,1), 
 plot(Data.Alt_Burst_Time,Data.Alt_Burst_Pressure,'.'), hold all
 ylabel('P')
@@ -84,6 +86,41 @@ loglog(hP.frequencies,hP.data), hold all
 xlabel('Freq [Hz]')
 ylabel('Energy')
 title('Pressure....')
+
+% or with fft instead of dspdata.psd:
+period = 1/fs;
+L = length(t)
+f = fs*(0:(L/2))/L;
+t_sec = (0:L-1)*period;
+plot(t_sec,Pdt);
+
+Y = fft(Pdt.*hanning(length(Pdt)));
+P2 = abs(Y/L);
+P1 = P2(1:L/2+1);
+P1(2:end-1) = 2*P1(2:end-1);
+
+Yt = fft(Tdt.*hanning(length(Tdt)));
+P2t = abs(Yt/L);
+P1t = P2t(1:L/2+1);
+P1t(2:end-1) = 2*P1t(2:end-1);
+
+figure(99)
+subplot(3,1,[2 3])
+plot(f,P1), hold all
+set(gca,'xscale','log')
+subplot(311)
+plot(t,P), hold all
+datetick('x')
+
+figure(100)
+subplot(3,1,[2 3])
+plot(f,P1t), hold all
+set(gca,'xscale','log')
+subplot(311)
+plot(t,T), hold all
+datetick('x')
+
+
 
 legentry{idxleg} = datestr(mean(t));
 idxleg = idxleg+1;
