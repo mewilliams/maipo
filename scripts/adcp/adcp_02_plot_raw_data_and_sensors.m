@@ -42,7 +42,7 @@ datetick2('x')
 %
 
 
-starttime_day2 = datenum(2019,12,11,14,45,0);
+starttime_day2 = datenum(2019,12,11,15,0,0);
 endtime_day2 = datenum(2019,12,11,23,30,0);
 startidx_day2 = find(adcp.mtime>starttime_day2,1,'first')
 endidx_day2 = find(adcp.mtime<endtime_day2,1,'last')
