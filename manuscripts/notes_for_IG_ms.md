@@ -20,4 +20,10 @@ The ADCP data in East and North velocities for the two days looks like this. (No
 ![](../images/adcpimages/day2_east_north_adcp_pcolor_10s_movavg.png)
 
 
+Choosing to use only the first bin on each dataset. Rotation into principle flow direction based on bin 1 data only. One rotation for entire dataset: -38 degrees on day 1 and -34 degrees on day 2. Some lateral flow remains in the day 2 data, but ignoring it for now.
+
+
+![](../images/adcpimages/day1_velocity_rotation.png)
+![](../images/adcpimages/day2_velocity_rotation.png)
+
 
