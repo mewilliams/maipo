@@ -42,6 +42,11 @@ Apply a continuous wavelet transformation to that dataset, looks like this:
 
 ![](../images/adcpimages/wavelet_of_IG_component_day1.png)
 
+***
+
+Not entirely clear. To be very simple - how about a moving variance? 
+
+![](../images/adcpimages/velocity_variance_bin1_adcp_day1.png)
 
 
 
