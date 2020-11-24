@@ -34,9 +34,14 @@ On day 1 I'm doing some filling of NaNs - it looks like this (linear fill to see
 
 ***
 
-I want to take a moving average to separate the average and IG signal. A 15-minute moving average looks like this:
+I want to take a moving average to separate the average and IG signal. A 15-minute moving average looks like this (![](../images/adcpimages/eqn_split_U.png)):
 
 ![](../images/adcpimages/split_moving_avg_and_IG_component_day1.png)
+
+Apply a continuous wavelet transformation to that dataset, looks like this:
+
+![](../images/adcpimages/wavelet_of_IG_component_day1.png)
+
 
 
 
