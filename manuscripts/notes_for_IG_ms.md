@@ -26,4 +26,18 @@ Choosing to use only the first bin on each dataset. Rotation into principle flow
 ![](../images/adcpimages/day1_velocity_rotation.png)
 ![](../images/adcpimages/day2_velocity_rotation.png)
 
+***
+
+On day 1 I'm doing some filling of NaNs - it looks like this (linear fill to see if I can separate the tides and IG component). This is the worst case on day 1. More on day 2 (probably should split the dataset and avoid filling on day 2.)
+
+![](../images/adcpimages/day1_some_NaN_filling.png)
+
+***
+
+I want to take a moving average to separate the average and IG signal. A 15-minute moving average looks like this:
+
+![](../images/adcpimages/split_moving_avg_and_IG_component_day1.png)
+
+
+
 
