@@ -15,9 +15,9 @@ Day 1 (10 Dec 2020) - what time was the LTV ADCP in place? (Field notes in googl
 
 The ADCP data in East and North velocities for the two days looks like this. (Note: slightly different depth axis on day 1 than 2). 
 
-![](../../images/adcpimages/day1_east_north_adcp_pcolor_10s_movavg.png)
+![](../images/adcpimages/day1_east_north_adcp_pcolor_10s_movavg.png)
 
-![](../../images/adcpimages/day2_east_north_adcp_pcolor_10s_movavg.png)
+![](../images/adcpimages/day2_east_north_adcp_pcolor_10s_movavg.png)
 
 
 
