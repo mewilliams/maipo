@@ -22,7 +22,7 @@
 *.log
 
 # Ignore images for now at least
-*.png
+#*.png
 *.eps
 *.jpg
 
