@@ -111,6 +111,73 @@ subplot(212)
 plot(timefill,U_15minsmooth,'linewidth',2), hold all
 plot(timefill,U_fill10ma-U_15minsmooth)
 legend('U, 15-min. moving avg','IG component (mov. avg. removed)')
+%% wavelet?
+fs = 1;
+[wtnn1,f1nn1,coinn1] = cwt((U_fill10ma-U_15minsmooth),fs);
+
+subplot(3,1,[1 2])
+pcolor(timefill,f1nn1,abs(wtnn1)), shading flat
+hold all
+xl = xlim;
+plot(timefill,coinn1,'w','linewidth',2)
+set(gca,'yscale','log')
+ylabel('Frequency [Hz]')
+
+plot(xl,ones(2,1)*(1/300),'w--','linewidth',2)
+plot(xl,ones(2,1)*(1/30),'w--','linewidth',2)
+subplot(3,1,3)
+plot(timefill,(U_fill10ma-U_15minsmooth))
+
+
+%% Let's just look at moving variance
+figure
+subplot(211)
+plot(timefill,U_fill10ma,'k')
+hold all
+plot(timefill,(U_15minsmooth),'r'), legend({'U, 10-s moving avg','15-min smooth'},'location','best')
+ix0 = find(abs(U_15minsmooth)<.0001);
+yl = ylim;
+plot(timefill(ix0)*ones(2,1),yl,'k--')
+
+
+ylabel('velocity (m/s)')
+grid on
+
+subplot(212)
+plot(timefill,sqrt(movvar(U_fill10ma-U_15minsmooth,600))), hold all
+plot(timefill,sqrt(movvar(U_fill10ma-U_15minsmooth,15*60))), hold all
+plot(timefill,sqrt(movvar(U_fill10ma-U_15minsmooth,6*60)),'k'), hold all
+
+yl = ylim;
+plot(timefill(ix0)*ones(2,1),yl,'k--')
+
+legend('10-min. moving variance','15-min. moving variance','6 min')
+ylabel('sqrt. of variance of velocity (m/s)')
+grid on
+xlabel('10 Dec. 2019)')
+datetick2('x')
+
+%%
+
+figure
+plot(timefill,U_fill10ma), hold all
+Uig = bandpass(U_fill10ma,[1/300 1/25],fs);
+plot(timefill, Uig)
+plot(timefill,U_fill10ma-Uig)
+
+figure
+Uighp = highpass(U_fill10ma,1/360,fs);
+plot(timefill, Uighp)
+% plot(timefill,U_fill10ma-Uighp)
+hold all
+plot(timefill,U_fill10ma-Uighp)
+
+
+%%
+
+pspectrum(U_fill10ma,fs,'FrequencyResolution',.05);%, ...
+  %  'TimeResolution',0.0256,'Overlap',86,'Leakage',0.875)
+return;
 
 
 %%
@@ -132,3 +199,7 @@ legend('bin 1','2','3','4')
 
 figure, subplot(211), pcolor(adcp.mtime,cfg.ranges,evconv), shading flat
 subplot(212), pcolor(adcp.mtime,cfg.ranges,nvconv), shading flat
+
+
+figure
+subplot(211), plot(adcp.mtime,movvar(evconv(1,:),15*60))
